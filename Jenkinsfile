@@ -50,6 +50,9 @@ pipeline {
       mail to: 'nairsuraj117@gmail.com',
            subject: "Pipeline Success: ${currentBuild.fullDisplayName}",
            body: "The pipeline ${currentBuild.fullDisplayName} has succeeded."
+           attachLog: true,
+           attachmentsPattern: "**/*.log",
+           to: "email@example.com"
     }
     failure {
       mail to: 'nairsuraj117@gmail.com',
