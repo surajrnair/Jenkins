@@ -15,13 +15,13 @@ pipeline {
       post {
                 success {
                   
-                        to: 'nairsuraj117@gmail.com',
+                   mail to: 'nairsuraj117@gmail.com',
                         subject: "Success - Unit and Integration Tests: ${env.JOB_NAME} [${env.BUILD_NUMBER}]",
                         body: "Unit and Integration Tests stage completed successfully.",
                 }
                 failure {
                     
-                        to: 'nairsuraj117@gmail.com',
+                   mail to: 'nairsuraj117@gmail.com',
                         subject: "Failure - Unit and Integration Tests: ${env.JOB_NAME} [${env.BUILD_NUMBER}]",
                         body: "Unit and Integration Tests stage failed. Please check the attached logs.",
                 }
@@ -41,12 +41,12 @@ pipeline {
     }
     post {
       success {
-                  to: 'nairsuraj117@gmail.com',
+             mail to: 'nairsuraj117@gmail.com',
                   subject: "Success - Security Scan: ${env.JOB_NAME} [${env.BUILD_NUMBER}]",
                   body: "Security Scan stage completed successfully.",
                 }
       failure {
-                  to: 'nairsuraj117@gmail.com',
+             mail to: 'nairsuraj117@gmail.com',
                   subject: "Failure - Security Scan: ${env.JOB_NAME} [${env.BUILD_NUMBER}]",
                   body: "Security Scan stage failed. Please check the attached logs.",
                 }
