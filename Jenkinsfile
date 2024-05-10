@@ -50,7 +50,6 @@ pipeline {
                         subject: "Failure - Security Scan: ${env.JOB_NAME} [${env.BUILD_NUMBER}]",
                         body: "Security Scan stage failed. Please check the attached logs.",
                         attachLog: true
-                    )
                 }
             }
         }
