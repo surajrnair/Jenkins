@@ -12,6 +12,20 @@ pipeline {
       steps {
         echo 'Stage 2: Unit and Integration Tests - Using TestNG for unit tests and Selenium for integration tests.'
       }
+      post {
+                success {
+                  
+                        to: 'nairsuraj117@gmail.com',
+                        subject: "Success - Unit and Integration Tests: ${env.JOB_NAME} [${env.BUILD_NUMBER}]",
+                        body: "Unit and Integration Tests stage completed successfully.",
+                }
+                failure {
+                    
+                        to: 'nairsuraj117@gmail.com',
+                        subject: "Failure - Unit and Integration Tests: ${env.JOB_NAME} [${env.BUILD_NUMBER}]",
+                        body: "Unit and Integration Tests stage failed. Please check the attached logs.",
+                }
+            }
     }
 
     stage('Code Analysis') {
@@ -25,10 +39,22 @@ pipeline {
         echo 'Stage 4: Security Scan - Using tools like OWASP Dependency-Check or to identify vulnerabilities.'
       }
     }
-
+    post {
+      success {
+                  to: 'nairsuraj117@gmail.com',
+                  subject: "Success - Security Scan: ${env.JOB_NAME} [${env.BUILD_NUMBER}]",
+                  body: "Security Scan stage completed successfully.",
+                }
+      failure {
+                  to: 'nairsuraj117@gmail.com',
+                  subject: "Failure - Security Scan: ${env.JOB_NAME} [${env.BUILD_NUMBER}]",
+                  body: "Security Scan stage failed. Please check the attached logs.",
+                }
+    }
     stage('Deploy to Staging') {
       steps {
         echo 'Stage 5: Deploy to Staging - Deploy to a staging server using Jenkins Deploy Plugin.'
+        
       }
     }
 
