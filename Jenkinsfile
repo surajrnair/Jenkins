@@ -14,16 +14,20 @@ pipeline {
             }
             post {
                 success {
-                    mail to: 'nairsuraj117@gmail.com',
+                    emailext(
+                        to: 'nairsuraj117@gmail.com',
                         subject: "Success - Unit and Integration Tests: ${env.JOB_NAME} [${env.BUILD_NUMBER}]",
                         body: "Unit and Integration Tests stage completed successfully.",
                         attachLog: true
+                    )
                 }
                 failure {
-                    mail to: 'nairsuraj117@gmail.com',
+                    emailext(
+                        to: 'nairsuraj117@gmail.com',
                         subject: "Failure - Unit and Integration Tests: ${env.JOB_NAME} [${env.BUILD_NUMBER}]",
                         body: "Unit and Integration Tests stage failed. Please check the attached logs.",
                         attachLog: true
+                    )
                 }
             }
         }
@@ -40,16 +44,20 @@ pipeline {
             }
             post {
                 success {
-                    mail to: 'nairsuraj117@gmail.com',
+                    emailext(
+                        to: 'nairsuraj117@gmail.com',
                         subject: "Success - Security Scan: ${env.JOB_NAME} [${env.BUILD_NUMBER}]",
                         body: "Security Scan stage completed successfully.",
                         attachLog: true
+                    )
                 }
                 failure {
-                    mail to: 'nairsuraj117@gmail.com',
+                    emailext(
+                        to: 'nairsuraj117@gmail.com',
                         subject: "Failure - Security Scan: ${env.JOB_NAME} [${env.BUILD_NUMBER}]",
                         body: "Security Scan stage failed. Please check the attached logs.",
                         attachLog: true
+                    )
                 }
             }
         }
@@ -75,16 +83,20 @@ pipeline {
 
     post {
         success {
-            mail to: 'nairsuraj117@gmail.com',
+            emailext(
+                to: 'nairsuraj117@gmail.com',
                 subject: "Pipeline Overall Success: ${env.JOB_NAME} [${env.BUILD_NUMBER}]",
                 body: "The pipeline has completed successfully across all stages.",
                 attachLog: true
+            )
         }
         failure {
-            mail to: 'nairsuraj117@gmail.com',
+            emailext(
+                to: 'nairsuraj117@gmail.com',
                 subject: "Pipeline Overall Failure: ${env.JOB_NAME} [${env.BUILD_NUMBER}]",
                 body: "The pipeline has failed. Please review the attached logs.",
                 attachLog: true
+            )
         }
     }
 }
