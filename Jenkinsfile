@@ -51,7 +51,6 @@ pipeline {
                 to: 'nairsuraj117@gmail.com',
                 subject: "Pipeline Success: ${env.JOB_NAME} [${env.BUILD_NUMBER}]",
                 body: "The pipeline ${env.JOB_NAME} [${env.BUILD_NUMBER}] has succeeded.",
-                attachLog: true
             )
         }
         failure {
@@ -59,7 +58,6 @@ pipeline {
                 to: 'nairsuraj117@gmail.com',
                 subject: "Pipeline Failure: ${env.JOB_NAME} [${env.BUILD_NUMBER}]",
                 body: "The pipeline ${env.JOB_NAME} [${env.BUILD_NUMBER}] has failed. Please check logs.",
-                attachLog: true
             )
         }
     }
